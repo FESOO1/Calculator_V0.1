@@ -26,6 +26,47 @@ let calculator = {
     isCalculateButtonClicked: false,
 };
 
+// THEME TOGGLE
+const themeToggleButton = document.querySelector('.calculator-top-theme-itself');
+const themeToggleButtonInner = document.querySelector('.calculator-top-theme-itself-inner');
+const themeToggleButtonGrid = document.querySelectorAll('.calculator-top-theme-itself-grid');
+const themeToggleButtonIndicatorText = document.querySelectorAll('.calculator-top-theme-container-text-itself');
+
+// CHANGING THE THEME
+
+function changingTheTheme(e) {
+    for (let i = 0; i < themeToggleButtonGrid.length; i++) {
+        themeToggleButtonGrid[i].addEventListener('click', () => {
+            switch (themeToggleButtonGrid[i].getAttribute('data-theme')) {
+                case '1':
+                    themeToggleButtonInner.style.left = '3px';
+                    removeTheActiveClassFromIndicatorTexts();
+                    themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
+                    break;
+                case '2':
+                    themeToggleButtonInner.style.left = 'calc(50% - 7.5px)';
+                    removeTheActiveClassFromIndicatorTexts();
+                    themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
+                    break;  
+                case '3':
+                    themeToggleButtonInner.style.left = 'calc(100% - 18px)';
+                    removeTheActiveClassFromIndicatorTexts();
+                    themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
+                    break; 
+            };
+        });
+    };
+};
+
+changingTheTheme();
+// 
+
+function removeTheActiveClassFromIndicatorTexts() {
+    for (const indicatorText of themeToggleButtonIndicatorText) {
+        indicatorText.classList.remove('calculator-top-theme-container-text-itself-active');
+    };
+};
+
 // ENTERING DIGITS
 
 for (let i = 0; i < calculatorButtonNumber.length; i++) {
@@ -137,3 +178,4 @@ calculatorResetButton.addEventListener('click', () => {
     calculatorScreen.textContent = '';
     calculatorScreenParagraph.textContent = '';
 });
+themeToggleButton.addEventListener('click', changingTheTheme);
