@@ -46,7 +46,6 @@ function changingTheTheme(e) {
                     removeTheActiveClassFromIndicatorTexts();
                     themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
                     removeAllTheThemeClassesFromBody();
-                    body.classList.add('body-theme-1');
                     break;
                 case '2':
                     themeToggleButtonInner.style.left = 'calc(50% - 7.5px)';
@@ -72,7 +71,6 @@ changingTheTheme();
 // REMOVE ALL THE THEME CLASSES FROM BODY
 
 function removeAllTheThemeClassesFromBody() {
-    body.classList.remove('body-theme-1');
     body.classList.remove('body-theme-2');
     body.classList.remove('body-theme-3');
 };

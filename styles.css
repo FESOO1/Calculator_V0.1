@@ -231,20 +231,51 @@ body {
 
 */
 
-/* BODY THEME 1 */
-
-.body-theme-1 {
-    
-}
-
 /* BODY THEME 2 */
 
 .body-theme-2 {
-    
+    background-color: hsl(0, 0%, 90%);
+}
+
+.body-theme-2 .calculator-top-text,
+.body-theme-2 .calculator-top-theme-text,
+.body-theme-2 .calculator-top-theme-container-text-itself-active,
+.body-theme-2 .calculator-middle,
+.body-theme-2 .calculator-bottom-button {
+    color: hsl(60, 10%, 19%);
+}
+
+.body-theme-2 .calculator-top-theme-itself {
+    background-color: hsl(0, 5%, 81%);
+}
+
+.body-theme-2 .calculator-top-theme-itself-inner {
+    background-color: hsl(25, 98%, 40%);
+}
+
+.body-theme-2 .calculator-top-theme-itself-inner:hover {
+    background-color: hsl(25, 100%, 47%);
+}
+
+.body-theme-2 .calculator-middle {
+    background-color: hsl(0, 0%, 93%);
+}
+
+.body-theme-2 .calculator-bottom {
+    background-color: hsl(0, 5%, 81%);
+}
+
+.body-theme-2 .calculator-bottom-button {
+    background-color: hsl(45, 7%, 89%);
+    box-shadow: 0 3.5px 0 hsl(35, 11%, 61%);
+}
+
+.body-theme-2 .calculator-bottom-button:hover {
+    background-color: white;
 }
 
 /* BODY THEME 3 */
 
 .body-theme-3 {
-
+    background-color: hsl(268, 75%, 9%);
 }
