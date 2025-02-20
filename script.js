@@ -23,6 +23,7 @@ let calculator = {
     calculatorSecondEnteredDigits: [],
     isClickedOnMathOperator: false,
     ClickedOnMathOperator: '',
+    isCalculateButtonClicked: false,
 };
 
 // ENTERING DIGITS
@@ -43,20 +44,29 @@ for (let i = 0; i < calculatorButtonNumber.length; i++) {
             const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
             calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
         };
+
+        calculator.isCalculateButtonClicked = false;
     });
 };
 
 // DELETING A DIGIT
 
 function deletingOneDigit() {
-    if (calculator.isClickedOnMathOperator === false) {
-        calculator.calculatorFirstEnteredDigits.pop();
-        const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
-        calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
+    if (calculator.isCalculateButtonClicked === false) {
+        if (calculator.isClickedOnMathOperator === false) {
+            calculator.calculatorFirstEnteredDigits.pop();
+            const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
+            calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
+        } else {
+            calculator.calculatorSecondEnteredDigits.pop();
+            const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
+            calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
+        };
     } else {
-        calculator.calculatorSecondEnteredDigits.pop();
-        const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
-        calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
+        resetEverything();
+
+        calculatorScreen.textContent = '';
+        calculatorScreenParagraph.textContent = '';
     };
 };
 
@@ -78,6 +88,7 @@ for (let i = 0; i < calculatorMathOperatorButton.length; i++) {
 // CALCULATE THE VALUE
 
 function calculateTheValue() {
+    calculator.isCalculateButtonClicked = true;
     const firstEnteredDigits = Number(calculator.calculatorFirstEnteredDigits.join(',').replaceAll(',', ''));
     const secondEnteredDigits = Number(calculator.calculatorSecondEnteredDigits.join(',').replaceAll(',', ''));
 
