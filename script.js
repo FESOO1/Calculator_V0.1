@@ -1,3 +1,6 @@
+// BODY
+const body = document.querySelector('body');
+
 // CALCULATOR SCREEN
 const calculatorScreen = document.querySelector('.calculator-middle-screen');
 const calculatorScreenParagraph = document.querySelector('.calculator-middle-screen-paragraph');
@@ -42,16 +45,22 @@ function changingTheTheme(e) {
                     themeToggleButtonInner.style.left = '3px';
                     removeTheActiveClassFromIndicatorTexts();
                     themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
+                    removeAllTheThemeClassesFromBody();
+                    body.classList.add('body-theme-1');
                     break;
                 case '2':
                     themeToggleButtonInner.style.left = 'calc(50% - 7.5px)';
                     removeTheActiveClassFromIndicatorTexts();
                     themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
+                    removeAllTheThemeClassesFromBody();
+                    body.classList.add('body-theme-2');
                     break;  
                 case '3':
                     themeToggleButtonInner.style.left = 'calc(100% - 18px)';
                     removeTheActiveClassFromIndicatorTexts();
                     themeToggleButtonIndicatorText[i].classList.add('calculator-top-theme-container-text-itself-active');
+                    removeAllTheThemeClassesFromBody();
+                    body.classList.add('body-theme-3');
                     break; 
             };
         });
@@ -59,7 +68,16 @@ function changingTheTheme(e) {
 };
 
 changingTheTheme();
-// 
+
+// REMOVE ALL THE THEME CLASSES FROM BODY
+
+function removeAllTheThemeClassesFromBody() {
+    body.classList.remove('body-theme-1');
+    body.classList.remove('body-theme-2');
+    body.classList.remove('body-theme-3');
+};
+
+// REMOVE THE ACTIVE CLASS FROM INDICATOR TEXTS
 
 function removeTheActiveClassFromIndicatorTexts() {
     for (const indicatorText of themeToggleButtonIndicatorText) {
