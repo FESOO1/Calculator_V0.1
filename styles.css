@@ -278,8 +278,95 @@ body {
     box-shadow: 0 0 0 hsl(35, 11%, 61%);
 }
 
+.body-theme-2 .calculator-bottom-button-delete,
+.body-theme-2 .calculator-bottom-button-reset {
+    background-color: hsl(185, 42%, 37%);
+    box-shadow: 0 3.5px 0 hsl(185, 58%, 25%);
+    color: white;
+}
+
+.body-theme-2 .calculator-bottom-button-delete:hover,
+.body-theme-2 .calculator-bottom-button-reset:hover {
+    background-color: hsl(184, 41%, 45%);
+}
+
+.body-theme-2 .calculator-bottom-button-equal {
+    background-color: hsl(25, 98%, 40%);
+    box-shadow: 0 3.5px 0 hsl(25, 99%, 27%);
+    color: white;
+    font-size: 1.5rem;
+}
+
+.body-theme-2 .calculator-bottom-button-equal:hover {
+    background-color: hsl(25, 100%, 47%);
+}
+
 /* BODY THEME 3 */
 
 .body-theme-3 {
     background-color: hsl(268, 75%, 9%);
+}
+
+.body-theme-3 .calculator-top-text,
+.body-theme-3 .calculator-top-theme-text,
+.body-theme-3 .calculator-top-theme-container-text-itself-active,
+.body-theme-3 .calculator-middle,
+.body-theme-3 .calculator-bottom-button {
+    color: hsl(52, 100%, 62%);
+}
+
+.body-theme-3 .calculator-top-theme-itself {
+    background-color: hsl(268, 71%, 12%);
+}
+
+.body-theme-3 .calculator-top-theme-itself-inner {
+    background-color: hsl(176, 100%, 44%);
+}
+
+.body-theme-3 .calculator-top-theme-itself-inner:hover {
+    background-color: hsl(176, 99%, 47%);
+}
+
+.body-theme-3 .calculator-middle {
+    background-color: hsl(268, 71%, 12%);
+}
+
+.body-theme-3 .calculator-bottom {
+    background-color: hsl(268, 71%, 12%);
+}
+
+.body-theme-3 .calculator-bottom-button {
+    background-color: hsl(268, 47%, 21%);
+    box-shadow: 0 3.5px 0 hsl(290, 70%, 36%);
+}
+
+.body-theme-3 .calculator-bottom-button:hover {
+    background-color: hsl(268, 49%, 31%);
+}
+
+.body-theme-3 .calculator-bottom-button:active {
+    box-shadow: 0 0 0 hsl(290, 70%, 36%);
+}
+
+.body-theme-3 .calculator-bottom-button-delete,
+.body-theme-3 .calculator-bottom-button-reset {
+    background-color: hsl(281, 89%, 26%);
+    box-shadow: 0 3.5px 0 hsl(285, 91%, 52%);
+    color: white;
+}
+
+.body-theme-3 .calculator-bottom-button-delete:hover,
+.body-theme-3 .calculator-bottom-button-reset:hover {
+    background-color: hsl(281, 89%, 34%);
+}
+
+.body-theme-3 .calculator-bottom-button-equal {
+    background-color: hsl(176, 100%, 44%);
+    box-shadow: 0 3.5px 0 hsl(177, 92%, 70%);
+    color: black;
+    font-size: 1.5rem;
+}
+
+.body-theme-3 .calculator-bottom-button-equal:hover {
+    background-color: hsl(176, 99%, 47%);
 }
