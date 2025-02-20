@@ -41,8 +41,6 @@ for (let i = 0; i < calculatorButtonNumber.length; i++) {
             const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
             calculatorScreen.innerHTML = beingEnteredDigitString.replaceAll(',', '');
         };
-
-        console.log(calculator.calculatorFirstEnteredDigits);
     });
 };
 
