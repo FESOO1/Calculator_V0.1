@@ -34,14 +34,14 @@ for (let i = 0; i < calculatorButtonNumber.length; i++) {
             
             // SHOWING THE CLICKED DIGIT ON THE SCREEN
             const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
-            calculatorScreen.innerHTML = beingEnteredDigitString.replaceAll(',', '');
-            calculatorScreenParagraph.innerHTML = '';
+            calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
+            calculatorScreenParagraph.textContent = '';
         } else {
             calculator.calculatorSecondEnteredDigits.push(calculatorButtonNumber[i].value);
 
             // SHOWING THE CLICKED DIGIT ON THE SCREEN
             const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
-            calculatorScreen.innerHTML = beingEnteredDigitString.replaceAll(',', '');
+            calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
         };
     });
 };
@@ -52,24 +52,26 @@ function deletingOneDigit() {
     if (calculator.isClickedOnMathOperator === false) {
         calculator.calculatorFirstEnteredDigits.pop();
         const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
-        calculatorScreen.innerHTML = beingEnteredDigitString.replaceAll(',', '');
+        calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
     } else {
         calculator.calculatorSecondEnteredDigits.pop();
         const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
-        calculatorScreen.innerHTML = beingEnteredDigitString.replaceAll(',', '');
+        calculatorScreen.textContent = beingEnteredDigitString.replaceAll(',', '');
     };
 };
 
 // MATH OPERATOR
 for (let i = 0; i < calculatorMathOperatorButton.length; i++) {
     calculatorMathOperatorButton[i].addEventListener('click', () => {
-        const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
-        calculatorScreenParagraph.innerHTML = beingEnteredDigitString.replaceAll(',', '');;
-        calculatorScreenParagraph.innerHTML += calculatorMathOperatorButton[i].value;
+        if (calculator.calculatorSecondEnteredDigits.length === 0) {
+            const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
+            calculatorScreenParagraph.textContent = beingEnteredDigitString.replaceAll(',', '');;
+            calculatorScreenParagraph.textContent += calculatorMathOperatorButton[i].value;
 
-        // CHANGING THE VALUE OF BOOLEAN
-        calculator.ClickedOnMathOperator = calculatorMathOperatorButton[i].value;
-        calculator.isClickedOnMathOperator = true;
+            // CHANGING THE VALUE OF BOOLEAN
+            calculator.ClickedOnMathOperator = calculatorMathOperatorButton[i].value;
+            calculator.isClickedOnMathOperator = true;
+        };
     });
 };
 
@@ -97,17 +99,30 @@ function calculateTheValue() {
     };
 
     // SHOWING THE CALCUALTED VALUE ON THE SCREEN
-    calculatorScreen.innerHTML = calculatedValue();
+    calculatorScreen.textContent = calculatedValue();
 
     // SHOWING THE FULL MATH
     const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
-    calculatorScreenParagraph.innerHTML += beingEnteredDigitString.replaceAll(',', '');;
+    calculatorScreenParagraph.textContent += beingEnteredDigitString.replaceAll(',', '');
 
+    // RESETTING EVERYTHING
+    resetEverything();
+};
+
+function resetEverything() {
     // RESETTING EVERYTHING
     calculator.ClickedOnMathOperator = '';
     calculator.isClickedOnMathOperator = false;
+    calculator.calculatorFirstEnteredDigits = [];
+    calculator.calculatorSecondEnteredDigits = [];
 };
 
 // INITIALIZING BUTTONS
 calculatorCalculateButton.addEventListener('click', calculateTheValue);
 calculatorDeleteButton.addEventListener('click', deletingOneDigit);
+calculatorResetButton.addEventListener('click', () => {
+    resetEverything();
+
+    calculatorScreen.textContent = '';
+    calculatorScreenParagraph.textContent = '';
+});
