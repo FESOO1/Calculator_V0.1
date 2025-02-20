@@ -1,5 +1,6 @@
 // CALCULATOR SCREEN
 const calculatorScreen = document.querySelector('.calculator-middle-screen');
+const calculatorScreenParagraph = document.querySelector('.calculator-middle-screen-paragraph');
 
 // CALCULATOR NUMBER BUTTONS
 const calculatorButtonNumber = document.querySelectorAll('.calculator-bottom-button-number');
@@ -34,6 +35,7 @@ for (let i = 0; i < calculatorButtonNumber.length; i++) {
             // SHOWING THE CLICKED DIGIT ON THE SCREEN
             const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
             calculatorScreen.innerHTML = beingEnteredDigitString.replaceAll(',', '');
+            calculatorScreenParagraph.innerHTML = '';
         } else {
             calculator.calculatorSecondEnteredDigits.push(calculatorButtonNumber[i].value);
 
@@ -61,9 +63,51 @@ function deletingOneDigit() {
 // MATH OPERATOR
 for (let i = 0; i < calculatorMathOperatorButton.length; i++) {
     calculatorMathOperatorButton[i].addEventListener('click', () => {
+        const beingEnteredDigitString = calculator.calculatorFirstEnteredDigits.join(',');
+        calculatorScreenParagraph.innerHTML = beingEnteredDigitString.replaceAll(',', '');;
+        calculatorScreenParagraph.innerHTML += calculatorMathOperatorButton[i].value;
 
+        // CHANGING THE VALUE OF BOOLEAN
+        calculator.ClickedOnMathOperator = calculatorMathOperatorButton[i].value;
+        calculator.isClickedOnMathOperator = true;
     });
 };
 
+// CALCULATE THE VALUE
+
+function calculateTheValue() {
+    const firstEnteredDigits = Number(calculator.calculatorFirstEnteredDigits.join(',').replaceAll(',', ''));
+    const secondEnteredDigits = Number(calculator.calculatorSecondEnteredDigits.join(',').replaceAll(',', ''));
+
+    const calculatedValue = () => {
+        switch (calculator.ClickedOnMathOperator) {
+            case '+':
+                return firstEnteredDigits + secondEnteredDigits
+                break;
+            case '-':
+                return firstEnteredDigits - secondEnteredDigits
+                break;
+            case '*':
+                return firstEnteredDigits * secondEnteredDigits
+                break;
+            case '/':
+                return firstEnteredDigits / secondEnteredDigits
+                break;
+        };
+    };
+
+    // SHOWING THE CALCUALTED VALUE ON THE SCREEN
+    calculatorScreen.innerHTML = calculatedValue();
+
+    // SHOWING THE FULL MATH
+    const beingEnteredDigitString = calculator.calculatorSecondEnteredDigits.join(',');
+    calculatorScreenParagraph.innerHTML += beingEnteredDigitString.replaceAll(',', '');;
+
+    // RESETTING EVERYTHING
+    calculator.ClickedOnMathOperator = '';
+    calculator.isClickedOnMathOperator = false;
+};
+
 // INITIALIZING BUTTONS
+calculatorCalculateButton.addEventListener('click', calculateTheValue);
 calculatorDeleteButton.addEventListener('click', deletingOneDigit);
