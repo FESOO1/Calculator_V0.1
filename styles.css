@@ -370,3 +370,18 @@ body {
 .body-theme-3 .calculator-bottom-button-equal:hover {
     background-color: hsl(176, 99%, 47%);
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 550px) {
+    .calculator {
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 400px) {
+    .calculator-bottom {
+        gap: 15px;
+        padding: 15px;
+    }
+}
